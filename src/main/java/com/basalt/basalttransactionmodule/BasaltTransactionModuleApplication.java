@@ -12,9 +12,4 @@ public class BasaltTransactionModuleApplication {
         SpringApplication.run(BasaltTransactionModuleApplication.class, args);
     }
 
-    @Bean
-    public RestTemplate restTemplate(){
-        return new RestTemplate();
-    }
-
 }

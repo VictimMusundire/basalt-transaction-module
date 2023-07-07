@@ -11,10 +11,8 @@ import com.basalt.basalttransactionmodule.repositories.TransactionRepository;
 import com.basalt.basalttransactionmodule.services.TransactionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -24,13 +22,10 @@ import java.util.stream.Collectors;
 @Service
 @Slf4j
 public class TransactionServiceImpl implements TransactionService {
-
-    private final RestTemplate restTemplate;
     private final TransactionRepository transactionRepository;
     private final AccountRepository accountRepository;
 
-    public TransactionServiceImpl(RestTemplate restTemplate, TransactionRepository transactionRepository, AccountRepository accountRepository) {
-        this.restTemplate = restTemplate;
+    public TransactionServiceImpl(TransactionRepository transactionRepository, AccountRepository accountRepository) {
         this.transactionRepository = transactionRepository;
         this.accountRepository = accountRepository;
     }
