@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/transactions")
 @Slf4j
+@CrossOrigin("*")
 public class TransactionController {
 
     private final TransactionService transactionService;
