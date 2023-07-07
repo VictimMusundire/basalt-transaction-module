@@ -12,4 +12,5 @@ public interface TransactionService {
     List<TransactionDto> getAllTransactions();
     TransactionDto debit(TransactionDto transactionDto);
     TransactionDto credit(TransactionDto transactionDto);
+    Double checkBalance(String accountNumber);
 }

@@ -47,4 +47,12 @@ public class TransactionController {
         TransactionDto savedTransaction = transactionService.credit(transactionDto);
         return new ResponseEntity<>(savedTransaction, HttpStatus.CREATED);
     }
+
+    // Check Account balance REST API
+    @GetMapping("/balance/{accountNumber}")
+    public ResponseEntity<Double> checkBalance(@PathVariable("accountNumber") String accountNumber){
+        log.info("This is the check balance account ====> " + accountNumber);
+        Double balance = transactionService.checkBalance(accountNumber);
+        return new ResponseEntity<>(balance, HttpStatus.OK);
+    }
 }

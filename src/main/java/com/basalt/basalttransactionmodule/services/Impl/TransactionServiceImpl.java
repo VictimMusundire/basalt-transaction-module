@@ -77,4 +77,13 @@ public class TransactionServiceImpl implements TransactionService {
 
         return AutoTransactionMapper.MAPPER.mapToTransactionDto(savedTransaction);
     }
+
+    @Override
+    public Double checkBalance(String accountNumber) {
+       accountRepository.findByNumber(accountNumber)
+                .orElseThrow(
+                        () -> new AccountNotFoundException("Account not found to check balance")
+                );
+        return transactionRepository.checkBalance(accountNumber);
+    }
 }
