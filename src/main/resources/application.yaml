@@ -1,0 +1,33 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /api
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/basalt
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+  application:
+    name: basalt-accounting-module
+  jpa:
+    database: POSTGRESQL
+    show-sql: false
+    generate-ddl: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+          lob:
+            non_contextual_creation: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/basalt_db
+    username: postgres
+    password: postgres
+logging:
+  level:
+    com.com.basalt.basaltaccountingmodule: INFO
+    org.springframework.security: DEBUG
