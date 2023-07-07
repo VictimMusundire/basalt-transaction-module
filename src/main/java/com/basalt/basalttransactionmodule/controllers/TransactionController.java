@@ -2,6 +2,7 @@ package com.basalt.basalttransactionmodule.controllers;
 
 import com.basalt.basalttransactionmodule.dtos.TransactionDto;
 import com.basalt.basalttransactionmodule.services.TransactionService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +35,7 @@ public class TransactionController {
 
     // Transaction to debit an Account REST API
     @PostMapping("/debit")
-    public ResponseEntity<TransactionDto> debit(@RequestBody TransactionDto transactionDto){
+    public ResponseEntity<TransactionDto> debit(@Valid @RequestBody TransactionDto transactionDto){
         log.info("This is the debit request ====> " + transactionDto);
         TransactionDto savedTransaction = transactionService.debit(transactionDto);
         return new ResponseEntity<>(savedTransaction, HttpStatus.CREATED);
